@@ -1,23 +1,39 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
 class PokemonController extends Controller
 {
-    public function show($name){
-        $key = "pokemon_{$name}";
-        $pokemon = Cache::get($key);
+    public function search($term)
+    {
+        $key = "pokemon_list";
+        $pokemonList = Cache::get($key);
 
-        if (!$pokemon) {
-            $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$name}");
+        if (!$pokemonList) {
+            $response = Http::get("https://pokeapi.co/api/v2/pokemon?limit=2000");
+
             if ($response->failed()) {
-                return response()->json(['error' => 'Pokemon not found'], 404);
+                return response()->json(['error' => 'PokeAPI error'], 500);
             }
-            $pokemon = $response->json();
-            Cache::put($key, $pokemon, now()->addHour());
+
+            $pokemonList = collect($response->json()['results']);
+            Cache::put($key, $pokemonList, now()->addDay());
         }
-        return response()->json($pokemon);
+        $filtered = $pokemonList->filter(function ($pokemon) use ($term) {
+            return str_contains(strtolower($pokemon['name']), strtolower($term));
+        });
+
+        return response()->json($filtered->values());
+    }
+
+    public function getPokemon($name)
+    {
+        return Cache::remember("pokemon_$name", 3600, function () use ($name) {
+            $url = "https://pokeapi.co/api/v2/pokemon/$name";
+            return Http::get($url)->json();
+        });
     }
 }
