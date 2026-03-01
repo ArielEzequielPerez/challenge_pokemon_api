@@ -42,7 +42,8 @@ Una API Laravel para buscar y obtener detalles de Pokémon usando la [PokeAPI](h
 
 
 
-```bashLaravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```bash
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 git clone https://github.com/ArielEzequielPerez/challenge_pokemon_api.git
 
@@ -62,7 +63,7 @@ cd challenge_pokemon_api## Requisitos
 
 ```bash
 
-composer install- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+composer install
 
 ```
 
@@ -82,12 +83,6 @@ docker run --rm -v $(pwd):/app composer composer install
 
 ```
 
-```bashLaravel is accessible, powerful, and provides tools required for large, robust applications.
-
-Este comando:
-
-- Descarga la imagen oficial de Composergit clone https://github.com/ArielEzequielPerez/challenge_pokemon_api.git
-
 - Instala todas las dependencias en tu proyecto
 
 - No requiere tener Composer en tu máquinacd challenge_pokemon_api## Learning Laravel
@@ -106,7 +101,8 @@ Una vez que `vendor/bin/sail` esté disponible (desde la Opción A o B), inicia 
 
 
 
-```bashIf you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
 ./vendor/bin/sail up -d
 
