@@ -26,7 +26,7 @@ class PokemonControllerHttpTest extends TestCase
 
         Cache::shouldReceive('put')->once();
 
-        $response = $this->getJson('/pokemon/pika');
+        $response = $this->getJson('api/pokemon/pika');
 
         $response->assertStatus(200);
         $response->assertJsonCount(1);
@@ -41,7 +41,7 @@ class PokemonControllerHttpTest extends TestCase
             'https://pokeapi.co/api/v2/pokemon?limit=2000' => Http::response(['message' => 'error'], 500),
         ]);
 
-        $response = $this->getJson('/pokemon/x');
+        $response = $this->getJson('api/pokemon/x');
 
         $response->assertStatus(500);
         $response->assertJsonStructure(['error']);
@@ -53,7 +53,7 @@ class PokemonControllerHttpTest extends TestCase
             return $key === 'pokemon_mew' && $seconds === 3600 && is_callable($closure);
         })->andReturn(['name' => 'mew']);
 
-        $response = $this->getJson('/pokemon/details/mew');
+        $response = $this->getJson('api/pokemon/details/mew');
 
         $response->assertStatus(200);
         $response->assertJson(['name' => 'mew']);
