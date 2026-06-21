@@ -8,7 +8,9 @@ namespace App\Http\Controllers;
  *     version="1.0.0"
  * )
  * @OA\Server(
- *     url="http://localhost:8080"
+ *     url="L5_SWAGGER_CONST_HOST",
+ *     description="Servidor API"
+
  * )
  */
 abstract class Controller
