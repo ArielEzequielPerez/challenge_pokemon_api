@@ -6,7 +6,8 @@
     },
     "servers": [
         {
-            "url": "http://localhost:8080"
+            "url": "https://challengepokemonapi-production.up.railway.app",
+            "description": "Servidor API"
         },
         {
             "url": "/api"
